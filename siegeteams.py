@@ -46,28 +46,30 @@ def remove_players():
         try:
             if remove_player == 0:
                 print("> No one was removed.")
+                removal_function = False
             else:
                 removed_name = players[remove_player - 1]
                 del players[remove_player - 1]
                 print("> Removed player " + removed_name)
                 print(" ")
+                try:
+                    print("Updated Player List: ")
+                    print_players(players)
+                    print(" ")
+                    remove_answer = int(input(
+                        "Anyone else? Enter another number to remove another player, or press Enter to continue: "))
+                    if int(remove_answer) <= len(players):
+                        remove_player = remove_answer
+                        print(" ")
+                    else:
+                        print(" ")
+                        removal_function = False
+                except ValueError:
+                    print(" ")
+                    removal_function = False
         except ValueError:
             print(" ")
 
-        try:
-            print("Updated Player List: ")
-            print_players(players)
-            print(" ")
-            remove_answer = int(input("Anyone else? Enter another number to remove another player, or press Enter to continue."))
-            if int(remove_answer) <= len(players):
-                remove_player = remove_answer
-                print(" ")
-            else:
-                print(" ")
-                removal_function = False
-        except ValueError:
-                print(" ")
-                removal_function = False
 while active:
     retries = 1
     players = ["XMasterPrime", "sayonarapuppy", "Willis", "FueledByJon", "g dot", "Classixxs", "GPWAP2", "kwri"]
@@ -93,7 +95,7 @@ while active:
         # Uses function to assign teams
         assign_players(players)
 
-        endgame = int(input("Press 1 to reroll, press 2 to start over, or press 3 to quit."))
+        endgame = int(input("Press 1 to reroll, press 2 to start over, or press 3 to quit: "))
         if endgame == 1:
             blue_team = []
             orange_team = []
