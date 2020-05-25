@@ -1,10 +1,10 @@
-# Siege Teams Generator
+# Simple Team Generator
 # By Dustin Sison
 
 from random import randint
 active = True
-blue_team = []
-orange_team = []
+team_alpha = []
+team_omega = []
 players = []
 team_size_limit = 0
 
@@ -19,22 +19,22 @@ def assign_players(player):
     for i in player:
         team_assignment = randint(0, 1)
         if team_assignment == 0:
-            if len(blue_team) == team_size_limit:
-                orange_team.append(i)
+            if len(team_alpha) == team_size_limit:
+                team_omega.append(i)
             else:
-                blue_team.append(i)
+                team_alpha.append(i)
         else:
-            if len(orange_team) == team_size_limit:
-                blue_team.append(i)
+            if len(team_omega) == team_size_limit:
+                team_alpha.append(i)
             else:
-                orange_team.append(i)
+                team_omega.append(i)
     # Prints results
     print(" ")
-    print("Blue Team: ")
-    print_players(blue_team)
+    print("Attackers/Blue Team: ")
+    print_players(team_alpha)
     print(" ")
-    print("Orange Team: ")
-    print_players(orange_team)
+    print("Defenders/Orange Team: ")
+    print_players(team_omega)
     print(" ")
 
 def remove_players():
@@ -72,7 +72,7 @@ def remove_players():
 
 while active:
     retries = 1
-    players = ["XMasterPrime", "sayonarapuppy", "Willis", "FueledByJon", "g dot", "Classixxs", "GPWAP2", "kwri"]
+    players = ["XMasterPrime", "sayonarapuppy", "Willis", "FueledByJon", "g dot", "Classixxs", "GPWAP2", "ap", "Andrew", "Domisteez", "Ahh"]
 
     print("Registered Players: ")
     print_players(players)
@@ -97,12 +97,12 @@ while active:
 
         endgame = int(input("Press 1 to reroll, press 2 to start over, or press 3 to quit: "))
         if endgame == 1:
-            blue_team = []
-            orange_team = []
+            team_alpha = []
+            team_omega = []
         elif endgame == 2:
             retries = 0
-            blue_team = []
-            orange_team = []
+            team_alpha = []
+            team_omega = []
             continue
         elif endgame == 3:
             retries = 0
